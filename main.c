@@ -6,12 +6,11 @@
 /*   By: sudelory <sudelory@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:41 by sudelory          #+#    #+#             */
-/*   Updated: 2025/02/28 03:11:55 by sudelory         ###   ########.fr       */
+/*   Updated: 2025/02/28 04:06:58 by sudelory         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <string.h>
 
 void	init_stacks(t_init_stack *stack_a, t_init_stack *stack_b, int argc,
 		char **argv)
@@ -50,6 +49,27 @@ int	is_sorted(t_init_stack *stack)
 	return (1);
 }
 
+int	check_argv(char **argv)
+{
+	int		i;
+	char	*arg;
+
+	i = 1;
+	arg = NULL;
+	while (argv[i])
+	{
+		arg = argv[i];
+		while (*arg)
+		{
+			if (*arg == ' ')
+				return (0);
+			arg++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_init_stack	stack_a;
@@ -57,7 +77,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	if (!check_entry(argv))
+	if (!check_entry(argv) || !check_argv(argv))
 		error_and_exit();
 	init_stacks(&stack_a, &stack_b, argc, argv);
 	if (is_sorted(&stack_a))
