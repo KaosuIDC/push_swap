@@ -6,7 +6,7 @@
 /*   By: sudelory <sudelory@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:47:47 by sudelory          #+#    #+#             */
-/*   Updated: 2025/02/28 00:15:01 by sudelory         ###   ########.fr       */
+/*   Updated: 2025/02/28 05:06:57 by sudelory         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	push_lowest_to_b(t_init_stack *stack_a, t_init_stack *stack_b)
 void	sort_for_five(t_init_stack *stack_a, t_init_stack *stack_b)
 {
 	push_lowest_to_b(stack_a, stack_b);
-	push_lowest_to_b(stack_a, stack_b);
+	if (stack_a->size == 4)
+		push_lowest_to_b(stack_a, stack_b);
 	sort_for_three(stack_a, stack_b);
 	perform_push(stack_a, stack_b, "pa");
 	perform_push(stack_a, stack_b, "pa");
